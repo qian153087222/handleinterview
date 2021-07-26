@@ -20,7 +20,7 @@ function delayeringReduce(arr) {
     return arr.reduce((f, s) => Array.isArray(s) ? [...f, ...delayeringReduce(s)] : [...f, s], []);
 }
 
-//能用迭代的思路去实现吗
+//能用迭代的思路去实现吗 ES6扩展运算符...
 function delayeringIteration(arr) {
     if (!Array.isArray(arr)) return arr;
     while (arr.some((item) => Array.isArray(item))) {
@@ -31,4 +31,9 @@ function delayeringIteration(arr) {
 }
 
 
-console.log(delayeringIteration(arr));
+//字符串处理方法
+function delayeringToString(arr){
+    return arr.toString().split(',').map(item=>+item);
+}
+
+console.log(delayeringToString(arr));
