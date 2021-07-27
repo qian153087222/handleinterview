@@ -20,10 +20,11 @@ function delayeringReduce(arr) {
     return arr.reduce((f, s) => Array.isArray(s) ? [...f, ...delayeringReduce(s)] : [...f, s], []);
 }
 
-//能用迭代的思路去实现吗 ES6扩展运算符...
+//能用迭代的思路去实现吗 ES6扩展运算符... concat可以展开然后添加到数组 减少一维 然后继续 循环 直到没有为止
 function delayeringIteration(arr) {
     if (!Array.isArray(arr)) return arr;
     while (arr.some((item) => Array.isArray(item))) {
+        console.log(arr)
         arr = [].concat(...arr);
     }
     return arr;
@@ -36,4 +37,7 @@ function delayeringToString(arr){
     return arr.toString().split(',').map(item=>+item);
 }
 
-console.log(delayeringToString(arr));
+
+//新方法flat 
+const iii = arr.flat(Infinity)
+console.log(delayeringIteration(arr));
