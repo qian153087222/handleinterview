@@ -54,4 +54,4 @@ function compose(...fn){
     return fn.reduce((f,l)=>(...args)=>f(l(...args)));
 }
 
-console.log(compose(e)(1))
+console.log(compose(e,d,c,b,a))
